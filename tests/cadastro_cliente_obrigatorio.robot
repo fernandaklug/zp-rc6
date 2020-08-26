@@ -9,12 +9,12 @@ Test Template       Campos Obrigatorios
 
 ***Keywords***
 Campos Obrigatorios
-    [Arguments]   	${name}		${cpf}		${address}	${phone_number}     ${output_mensagem}
+    [Arguments]   	${name}		${cpf}		${address}	${phone_number}     ${expect_message}
     
     Dado que acesso o formulário de cadastro de clientes
 	Quando faço a inclusão desse cliente:
 	... 	${name}		${cpf}		${address}	${phone_number}
-	Então ver mensagens informando que os campos do cadastro de cliente são obrigatórios        ${output_mensagem}  
+	Então ver mensagens informando que os campos do cadastro de cliente são obrigatórios        ${expect_message}  
 
 ***Test Cases***  
 Nome é obrigatório          ${EMPTY}    00000014141		Rua dos bugs, 1000	    11999999999     Nome é obrigatório  
