@@ -31,13 +31,19 @@ Dado que acesso o formulário de cadastro de clientes
     Wait Until Element is Visible   ${CUSTUMERS_FORM}    5
 	Click Element	${CUSTUMERS_FORM}
 
-Quando faço a inclusão desse cliente:
+E que eu tenho o seguinte cliente:
     [Arguments]      ${name}		${cpf}		${address}	${phone_number}
 
     #db.py
     Remove Customer By Cpf      ${cpf}
 
-	Register New Customer       ${name}		${cpf}		${address}	${phone_number}
+    Set Test Variable   ${name}
+    Set Test Variable   ${cpf}
+    Set Test Variable   ${address}
+    Set Test Variable   ${phone_number}
+
+Quando faço a inclusão desse cliente
+    	Register New Customer       ${name}		${cpf}		${address}	${phone_number}
 Então devo ver a notificação:
     [Arguments]	    ${expect_notice}
 	Wait Until Element Contains	    ${TOASTER_SUCCESS}    ${expect_notice}
