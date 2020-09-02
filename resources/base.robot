@@ -10,6 +10,7 @@ Resource    components/Toaster.robot
 Resource    components/Sidebar.robot
 Resource    pages/LoginPage.robot
 Resource    pages/CustomersPage.robot
+Resource    pages/EquiposPage.robot
 
 ***Variables***
 #simples

@@ -4,6 +4,7 @@ Resource    components/Toaster.robot
 Resource    components/Sidebar.robot
 Resource    pages/LoginPage.robot
 Resource    pages/CustomersPage.robot
+Resource    pages/EquiposPage.robot
 
 ***Keywords***
 ## Login
@@ -67,3 +68,26 @@ Então devo ver o texto:
     [Arguments]     ${expect_text}
 
     Wait Until Page Contains        ${expect_text}      5
+
+#Equipos
+Dado que acesso o formulário de cadastro de equipamentos
+        Wait Until Element Is Visible       ${NAV_EQUIPOS}      5
+        Click Element                       ${NAV_EQUIPOS}
+        Wait Until Element Is Visible       ${EQUIPOS_FORM}     5
+        Click Element                       ${EQUIPOS_FORM}
+
+E que eu tenho o seguinte equipamento:
+    [Arguments]     ${name}     ${price}
+
+    Remove Equipo By Name      ${name}
+
+    Set Test Variable     ${name}
+    Set Test Variable     ${price}
+
+Quando faço a inclusão desse equipamento
+    Register New Equipo  ${name}     ${price}
+
+Mas esse equipo já existe no sistema
+    Insert Equipo    ${name}     ${price}
+
+
