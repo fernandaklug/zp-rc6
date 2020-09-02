@@ -1,19 +1,28 @@
 ***Settings***
+Documentation       Cadastro de clientes
 
-Documentation       Cadastro de Clientes
+Resource    ../resources/base.robot
 
-Resource        ../resources/base.robot
-
-Suite Setup      Login Session
-Suite Teardown   Finish Session
+Suite Setup          Login Session
+Suite Teardown       Finish Session
 
 ***Test Cases***
-Novo Cliente
+Novo cliente
+    [Tags]      smoke
     Dado que acesso o formulário de cadastro de clientes
     E que eu tenho o seguinte cliente:
-    ... 	Bon Jovi		00000014141	    Rua dos bugs, 1000		11999999999
-	Quando faço a inclusão desse cliente
-	Então devo ver a notificação:		Cliente cadastrado com sucesso!
+    ...         Bon Jovi        00000014141     Rua dos Bugs, 1000      11999999999
+    Quando faço a inclusão desse cliente
+    Então devo ver a notificação:   Cliente cadastrado com sucesso!
+
+Cliente duplicado
+    [Tags]      dup
+    Dado que acesso o formulário de cadastro de clientes
+    E que eu tenho o seguinte cliente:
+    ...         Adrian Smith    00000001406     Rua dos Bugs, 2000      11999999991
+    Mas esse cpf já existe no sistema
+    Quando faço a inclusão desse cliente
+    Então devo ver a notificação de erro:   Este CPF já existe no sistema!
 
 Campos Obrigatórios
     Dado que acesso o formulário de cadastro de clientes
@@ -30,17 +39,17 @@ Nome é Obrigatório
 Cpf é Obrigatório
     [Tags]          required
     [Template]     Validação de Campos
-    Fernando Papito        ${EMPTY}         Rua dos Bugs, 1000      11999999999     CPF é obrigatório
+    Bon Jovi        ${EMPTY}         Rua dos Bugs, 1000      11999999999     CPF é obrigatório
 
 Endereço é Obrigatório
     [Tags]          required
     [Template]     Validação de Campos
-    Fernando Papito        48034903094     ${EMPTY}      11999999999     Endereço é obrigatório
+    Bon Jovi       48034903094     ${EMPTY}      11999999999     Endereço é obrigatório
 
 Telefone é Obrigatório
     [Tags]          required
     [Template]     Validação de Campos
-    Fernando Papito        48034903094     Rua dos Bugs, 1000      ${EMPTY}     Telefone é obrigatório
+    Bon Jovi        48034903094     Rua dos Bugs, 1000      ${EMPTY}     Telefone é obrigatório
 
 Telefone incorreto
     [Template]      Validação de Campos

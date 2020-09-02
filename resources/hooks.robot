@@ -13,7 +13,3 @@ Login Session
 
     Go to           ${base_url}
     Login With      ${admin_user}     ${admin_pass} 
-
-    # Input Text          id:txtEmail                        admin@zepalheta.com.br
-    # Input Text          css:input[placeholder=Senha]        pwd123
-    # Click Element       xpath://button[text()='Entrar']
