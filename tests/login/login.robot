@@ -1,6 +1,6 @@
 ***Settings***
 Documentation       Login
-Resource        ../resources/base.robot
+Resource        ../../resources/base.robot
 
 # Comportamento (Dado, Quando, Então)
 # BDD só é BDD se o desenvolvedor ler a especificação e desenvolver orientado a ela

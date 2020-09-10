@@ -24,10 +24,9 @@ Devo ver um toaster com a mensagem
 
     Wait Until Element Contains     ${TOASTER_ERROR_P}     ${expect_message}
 
-## Customers
+## Save Customers
 Dado que acesso o formulário de cadastro de clientes
-    Wait Until Element Is Visible       ${NAV_CUSTOMERS}      5
-    Click Element                       ${NAV_CUSTOMERS}
+    Go To Customers
     Wait Until Element Is Visible       ${CUSTOMERS_FORM}     5
     Click Element                       ${CUSTOMERS_FORM}
 
@@ -69,25 +68,54 @@ Então devo ver o texto:
 
     Wait Until Page Contains        ${expect_text}      5
 
+E esse cliente deve ser exibido na lista
+    ${cpf_formatado}                    Format Cpf      ${Cpf}
+    Go Back
+    Wait Until Element is Visible       ${CUSTOMER_LIST}        5
+    Table Should Contain                ${CUSTOMER_LIST}        ${cpf_formatado}       
+
+## Remove Customer
+Dado que eu tenho um cliente indesejado:
+    [Arguments]         ${name}     ${cpf}      ${address}      ${phone_number}
+
+    Remove Customer By cpf          ${cpf}
+    Insert Customer                 ${name}     ${cpf}      ${address}      ${phone_number}
+
+    Set Test Variable    ${cpf}
+
+E acesso a lista de clientes
+    Go To Customers
+
+Quando eu removo esse cliente
+
+    # Format Cpf é a KW que representa o método no arquivo db.py
+    ${cpf_formatado}=           Format Cpf      ${cpf}
+    Set Test Variable           ${cpf_formatado}
+
+    Go To Customer Details      ${cpf_formatado}
+    Click Remove Customer
+
+E esse cliente não deve aparecer na lista
+    Wait Until Page Does Not Contain       ${cpf_formatado}
+
 #Equipos
 Dado que acesso o formulário de cadastro de equipamentos
-        Wait Until Element Is Visible       ${NAV_EQUIPOS}      5
-        Click Element                       ${NAV_EQUIPOS}
-        Wait Until Element Is Visible       ${EQUIPOS_FORM}     5
-        Click Element                       ${EQUIPOS_FORM}
+    Wait Until Element Is Visible       ${NAV_EQUIPOS}      5
+    Click Element                       ${NAV_EQUIPOS}
+    Wait Until Element Is Visible       ${EQUIPOS_FORM}     5
+    Click Element                       ${EQUIPOS_FORM}
 
 E que eu tenho o seguinte equipamento:
-    [Arguments]     ${name}     ${price}
+    [Arguments]     ${name}     ${daily_price}
 
     Remove Equipo By Name      ${name}
 
     Set Test Variable     ${name}
-    Set Test Variable     ${price}
-
-Quando faço a inclusão desse equipamento
-    Register New Equipo  ${name}     ${price}
+    Set Test Variable     ${daily_price}
 
 Mas esse equipo já existe no sistema
-    Insert Equipo    ${name}     ${price}
+    Insert Equipo    ${name}     ${daily_price}
 
+Quando faço a inclusão desse equipamento
+    Register New Equipo   ${name}     ${daily_price}
 

@@ -1,7 +1,7 @@
 ***Settings***
 Documentation       Cadastro de clientes
 
-Resource    ../resources/base.robot
+Resource    ../../resources/base.robot
 
 Suite Setup          Login Session
 Suite Teardown       Finish Session
@@ -14,6 +14,7 @@ Novo cliente
     ...         Bon Jovi        00000014141     Rua dos Bugs, 1000      11999999999
     Quando faço a inclusão desse cliente
     Então devo ver a notificação:   Cliente cadastrado com sucesso!
+    E esse cliente deve ser exibido na lista
 
 Cliente duplicado
     [Tags]      dup

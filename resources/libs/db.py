@@ -39,6 +39,7 @@ def remove_customer_by_cpf(cpf):
 
     execute_q(query)
 
+
 def insert_equipo(name, daily_price):
 
     query = "insert into public.equipos(name, daily_price) "\
