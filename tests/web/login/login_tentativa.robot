@@ -1,6 +1,6 @@
 ***Settings***
 Documentation       Login_tentativa
-Resource        ../resources/base.robot
+Resource        ../../../resources/base.robot
 
 # Test setup: executa uma ou mais keyword antes da execução de todos os steps de cada caso de teste
 # Suite setup: executa uma ou mais keywords somente uma vez antes de todos os casos de testes
