@@ -10,10 +10,10 @@ ${base_api_url}     http://zepalheta-api:3333
 Post Session
     [Arguments]       ${email}      ${password}
 
-    Create Session    zp-api             ${base_api_url} 
+    Create Session    zp-api                ${base_api_url} 
 
     &{headers}=       Create Dictionary     Content-Type=application/json
-    &{payload}=      Create Dictionary     email=${email}    password=${password}
+    &{payload}=       Create Dictionary     email=${email}    password=${password}
 
     ${resp}=          Post Request    zp-api     /sessions    data=${payload}   headers=${headers}
 
