@@ -2,6 +2,8 @@
 Documentation           Camada de serviços do projeto de automação
 
 Library             RequestsLibrary
+Library             Collections
+Resource            helpers.robot
 
 ***Variables***
 ${base_api_url}     http://zepalheta-api:3333
@@ -42,6 +44,42 @@ Post Customer
 
     [return]        ${resp}
 
+# PUT /customers
+Put Customer
+    [Arguments]     ${payload}      ${user_id}
+
+    Create Session      zp-api      ${base_api_url}
+
+    ${token}=       Get Session Token
+    &{headers}=     Create Dictionary       content-type=application/json   authorization=${token}
+
+    ${resp}=        Put Request        zp-api      /customers/${user_id}      data=${payload}     headers=${headers}
+
+    [return]        ${resp}
+
+# GET /customers
+Get Customers
+    Create Session       zp-api      ${base_api_url}
+
+    ${token}=       Get Session Token
+    &{headers}=     Create Dictionary         Content-Type=Application/json     Authorization=${token}
+
+    ${resp}=        Get Request     zp-api      /customers      headers=${headers}
+
+    [return]        ${resp}
+
+Get Unique Customer
+    [Arguments]     ${user_id}
+
+    Create Session       zp-api      ${base_api_url}
+
+    ${token}=       Get Session Token
+    &{headers}=     Create Dictionary         Content-Type=Application/json     Authorization=${token}
+
+    ${resp}=        Get Request     zp-api      /customers/${user_id}      headers=${headers}
+
+    [return]        ${resp}
+
 # DELETE /customers
 Delete Customer
     [Arguments]     ${cpf}
@@ -49,4 +87,6 @@ Delete Customer
     ${token}=       Get Session Token
     &{headers}=     Create Dictionary       content-type=application/json   authorization=${token}
 
-    Delete Request      zp-api      /customers/${cpf}    headers=${headers}
+    ${resp}=        Delete Request      zp-api      /customers/${cpf}    headers=${headers}
+
+    [return]        ${resp}
