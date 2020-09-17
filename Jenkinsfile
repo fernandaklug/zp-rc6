@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker{
+        docker {
             image 'python'
         }
     }
@@ -11,7 +11,7 @@ pipeline {
                 sh 'pip install -r requirements.txt'
             }
         }
-        stage('API Test')
+        stage('API Test') {
             steps {
                 sh 'robot -d ./logs tests/api'
             }
