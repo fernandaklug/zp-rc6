@@ -8,10 +8,12 @@ Resource        ../../../resources/base.robot
 # ATDD só é ATDD se o desenvolvedor ler a especificação e desenvolver orientado a ela
 
 # executa uma ou maus keyword antes da execução de todos os steps de cada caso de teste
-Test Setup      Start Session
+Suite Setup      Start Session
 
 # executa uma ou mais keywords após a execução de todos os steps de cada caso de teste
-Test Teardown       Finish Session
+Suite Teardown       Finish Session
+
+Test Teardown        Finish TestCase
 
 ***Test Cases***
 Login do Administrador

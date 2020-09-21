@@ -10,6 +10,7 @@ Suite Setup      Start Session
 # suite teardown: executa uma ou mais keywords uma única vez após finalizar todos os casos de testes
 
 Suite Teardown       Finish Session
+Test Teardown        Finish TestCase
 
 Test Template       Tentativa de login
 

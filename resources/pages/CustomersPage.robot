@@ -13,6 +13,8 @@ ${CUSTOMER_LIST}        css:table
 Register new Customer
     [Arguments] 	${name}		${cpf}		${address}	${phone_number}
    
+    Reload Page
+    
     Input Text	    id:name		${name}
     Input Text	    id:cpf		${cpf}
     Input Text	    id:address	${address}
