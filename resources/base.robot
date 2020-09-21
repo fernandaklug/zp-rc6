@@ -6,8 +6,8 @@ Library     libs/db.py
 Resource    kws.robot
 Resource    hooks.robot
 
-Resource    components/Toaster.robot
-Resource    components/Sidebar.robot
+Resource    Components/Toaster.robot
+Resource    Components/Sidebar.robot
 Resource    pages/LoginPage.robot
 Resource    pages/CustomersPage.robot
 Resource    pages/EquiposPage.robot
