@@ -5,12 +5,14 @@ Library     libs/db.py
 
 Resource    kws.robot
 Resource    hooks.robot
+Resource    services.robot
 
 Resource    Components/Toaster.robot
 Resource    Components/Sidebar.robot
 Resource    pages/LoginPage.robot
 Resource    pages/CustomersPage.robot
 Resource    pages/EquiposPage.robot
+Resource    pages/ContractsPage.robot
 
 ***Variables***
 #simples

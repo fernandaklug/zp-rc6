@@ -119,3 +119,30 @@ Mas esse equipo já existe no sistema
 Quando faço a inclusão desse equipamento
     Register New Equipo   ${name}     ${daily_price}
 
+## Contrato de Locação
+
+Dado que eu tenho o seguinte cliente cadastrado:
+    [Arguments]     ${file_name}
+
+    ${customer}=     Get Json  customers/${file_name}
+
+    Delete Customer     ${customer['cpf']}
+    Post Customer       ${customer}
+    Set Test Variable   ${customer}
+
+E este cliente deseja alugar o seguinte equipo:
+    [Arguments]     ${file_name}
+
+    ${equipo}=     Get Json  equipos/${file_name}
+
+    Post Equipo             ${equipo}
+    Set Test Variable       ${equipo}
+
+E acesso o formulário de contratos
+    Go To Contracts
+    Click Element   ${CONTRACTS_FORM}
+
+Quando faço um novo contrato de locação
+    Create a new Contract  ${customer['name']}  ${equipo['name']}
+
+
