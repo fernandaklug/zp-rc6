@@ -3,3 +3,4 @@ robotframework-seleniumlibrary
 robotframework-requests
 requests
 psycopg2
+robotframework-pabot

@@ -13,7 +13,7 @@ Create a new Contract
     Click Element   xpath://div[contains(text(), '${customer_name}')]
     
     Click Element   xpath://div[contains(text(), 'Escolha o item')]
-    Click Element   xpath://div[contains(text(), '${equipo_name}')]
+    Click Element   xpath://div[contains(text(), '${equipo['name']}')]
 
     Input Text      id:delivery_price       10
     Input Text      id:quantity             1
